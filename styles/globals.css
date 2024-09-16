@@ -13,6 +13,18 @@
     }
   }
 
+  .grid-container {
+    --paddingx: 0px;
+    --paddingy: 0px;
+    width: calc(100% + var(--paddingx) * 2) !important;
+    height: calc(100% + var(--paddingy) * 2) !important;
+    padding: 0;
+  }
+
+  .grid-container .grid-item {
+    padding: var(--paddingy) var(--paddingx);
+  }
+
   .no-tailwindcss-base {
 
     h1,

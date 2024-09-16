@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from "@nextui-org/button";
-import React, { ReactNode } from "react";
+import React, { ReactNode, Ref } from "react";
 
 import { ButtonColors } from "@/types";
 
@@ -8,7 +8,7 @@ interface FDButtonProps extends ButtonProps {
   colorType?: ButtonType;
 }
 
-type ButtonType =
+export type ButtonType =
   | "Btn-Success"
   | "Btn-Danger"
   | "Btn-Default"
@@ -25,20 +25,19 @@ const ButtonTypeEnum = {
   "Btn-Warning": "bg-btn-warning",
 } as { [key in ButtonType]: ButtonColors | undefined };
 
-const FDButton = ({
-  children,
-  className,
-  colorType = "Btn-Primary",
-  ...props
-}: FDButtonProps) => {
+const FDButton = (
+  { children, className, colorType = "Btn-Primary", ...props }: FDButtonProps,
+  ref: Ref<HTMLButtonElement>,
+) => {
   return (
     <Button
-      className={`text-white ${ButtonTypeEnum[colorType]} ${className ? className : ""}`}
+      className={`min-w-[150px] text-white ${ButtonTypeEnum[colorType]} ${className ? className : ""}`}
       {...props}
+      ref={ref}
     >
       {children}
     </Button>
   );
 };
 
-export default FDButton;
+export default React.forwardRef(FDButton);

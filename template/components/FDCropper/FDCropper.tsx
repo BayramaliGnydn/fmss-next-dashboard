@@ -54,7 +54,7 @@ const Cropper = ({
     } else {
       const cropper = cropperRef.current?.cropper;
 
-      onClose(cropper?.getCroppedCanvas().toDataURL("image/jpeg"));
+      onClose(cropper?.getCroppedCanvas().toDataURL("image/*"));
     }
   };
 
@@ -96,7 +96,7 @@ const Cropper = ({
                 <FDBox className="flex-col gap-2">
                   <ReactCropper
                     ref={cropperRef}
-                    aspectRatio={aspectRatio ?? 1}
+                    aspectRatio={aspectRatio ?? undefined}
                     autoCropArea={1} // Kırpma alanını maksimum yapar
                     background={false} // Arkaplanı kaldır
                     checkOrientation={false}

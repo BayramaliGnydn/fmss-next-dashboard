@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Ref } from "react";
 
 interface FDBoxProps
   extends React.DetailedHTMLProps<
@@ -9,12 +9,16 @@ interface FDBoxProps
   className?: string;
 }
 
-const FDBox = ({ children, className, ...props }: FDBoxProps) => {
-  return (
-    <div {...props} className={`flex ${className}`}>
-      {children}
-    </div>
-  );
-};
+const FDBox = React.forwardRef(
+  ({ children, className, ...props }: FDBoxProps, ref: Ref<HTMLDivElement>) => {
+    return (
+      <div {...props} ref={ref} className={`flex ${className}`}>
+        {children}
+      </div>
+    );
+  },
+);
+
+FDBox.displayName = "FDBox";
 
 export default FDBox;

@@ -1,8 +1,11 @@
 import { Input, InputProps } from "@nextui-org/input";
-import React from "react";
+import React, { Ref } from "react";
+const FDInput = React.forwardRef(
+  (props: InputProps, ref: Ref<HTMLInputElement>) => {
+    return <Input {...props} ref={ref} />;
+  },
+);
 
-const FDInput = (props: InputProps) => {
-  return <Input {...props} />;
-};
+FDInput.displayName = "FDInput";
 
 export default FDInput;
